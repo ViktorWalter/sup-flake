@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+
+gem "sup"
+
+# sup's gemspec doesn't declare xapian-ruby as a runtime dependency because
+# it normally installs it dynamically via a native extension hook (see
+# ext/mkrf_conf_xapian.rb). We disable that hook (it would try to reach the
+# network during the Nix build) and instead let bundler manage this gem like
+# any other dependency.
+gem "xapian-ruby", "~> 1.2"
